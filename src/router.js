@@ -1,6 +1,7 @@
 import Router from 'ampersand-router'
 import React from 'react'
 import qs from 'qs'
+import xhr from 'xhr'
 import Public from './pages/public'
 import Repos from './pages/repos'
 import Layout from './layout'
@@ -40,6 +41,15 @@ export default Router.extend({
   },
 
   authCallback(code) {
-    console.log('code from redirect', code)
+    xhr({
+      url: `https://labelr-dev.herokuapp.com/authenticate/${code}`,
+      json: true
+    }, (err, resp, body) => {
+      if(err) {
+        console.error(err)
+      } else {
+        console.log('testy', body.token)
+      }
+    })
   }
 })
