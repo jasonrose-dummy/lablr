@@ -1,3 +1,4 @@
+import app from 'ampersand-app'
 import Router from 'ampersand-router'
 import React from 'react'
 import qs from 'qs'
@@ -48,7 +49,8 @@ export default Router.extend({
       if(err) {
         console.error(err)
       } else {
-        console.log('testy', body.token)
+        app.me.token = body.token
+        this.redirectTo('/repos')
       }
     })
   }
