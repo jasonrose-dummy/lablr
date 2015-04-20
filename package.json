@@ -29,5 +29,7 @@
     "webpack-dev-server": "^1.8.0",
     "yeticss": "^6.0.3"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "surge": "^0.11.1"
+  }
 }
