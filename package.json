@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "deploy": "surge -p public -d jasonrose-lablr.surge.sh",
-    "start": "hjs-dev-server"
+    "build": "NODE_ENV=production webpack",
+    "yolo": "npm run commit && npm run build && npm run deploy",
+    "start": "hjs-dev-server",
+    "commit": "git commit -am \"commit on $(date)\""
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "surge": "^0.11.1"
+    "react": "^0.13.2"
   },
   "devDependencies": {
     "autoprefixer-stylus": "^0.5.0",
@@ -23,6 +26,7 @@
     "react-hot-loader": "^1.2.5",
     "style-loader": "^0.10.2",
     "stylus-loader": "^1.1.0",
+    "surge": "^0.11.1",
     "url-loader": "^0.5.5",
     "webpack": "^1.8.5",
     "webpack-dev-server": "^1.8.0",
