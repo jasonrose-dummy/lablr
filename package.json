@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ampersand-router": "^3.0.2",
     "react": "^0.13.2"
   },
   "devDependencies": {
