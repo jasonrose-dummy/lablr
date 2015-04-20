@@ -6,9 +6,10 @@
   "scripts": {
     "deploy": "surge -p public -d jasonrose-lablr.surge.sh",
     "build": "NODE_ENV=production webpack",
+    "prebuild": "rm -rf public && mkdir public",
     "yolo": "npm run commit && npm run build && npm run deploy",
     "start": "hjs-dev-server",
-    "commit": "git commit -am \"commit on $(date)\""
+    "commit": "git add -A && git commit -m \"commit on $(date)\""
   },
   "author": "",
   "license": "ISC",

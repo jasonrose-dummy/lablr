@@ -5,7 +5,6 @@ window.app = {
   init() {
     this.router = new Router()
     this.router.history.start()
-    
   }
 }
 
