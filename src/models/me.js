@@ -7,6 +7,8 @@ export default Model.extend(ajaxConfig, {
     if(localStorage.token) {
       this.token = localStorage.token
     }
+    this.on('change:isLoggedIn', this.fetchAll)
+
     this.on('change:token', () => {
         if (!this.token) {
           delete localStorage.token
@@ -18,6 +20,13 @@ export default Model.extend(ajaxConfig, {
   },
 
   url: 'https://api.github.com/user',
+
+  fetchAll() {
+    if(this.isLoggedIn) {
+      this.fetch()
+      this.repos.fetch()
+    }
+  },
 
   props: {
     token: 'string',
