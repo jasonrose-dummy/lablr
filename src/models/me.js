@@ -26,5 +26,9 @@ export default Model.extend({
         return !!this.token
       }
     }
+  },
+
+  logout() {
+    localStorage.clear()
   }
 })

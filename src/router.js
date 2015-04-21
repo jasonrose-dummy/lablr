@@ -7,12 +7,23 @@ import Public from './pages/public'
 import Repos from './pages/repos'
 import Layout from './layout'
 
+const auth = function(name) {
+  return function() {
+    if(app.me.isLoggedIn) {
+      this[name].apply(this, arguments)
+    } else {
+      this.redirectTo('/')
+    }
+  }
+}
+
 export default Router.extend({
   routes: {
     '': 'public',
-    'repos': 'repos',
+    'repos': auth('repos'),
     'login': 'login',
-    'auth/callback?code=:code': 'authCallback'
+    'auth/callback?code=:code': 'authCallback',
+    'logout': 'logout'
   },
 
   _renderPage(Page, options) {
@@ -39,6 +50,11 @@ export default Router.extend({
       client_id: 'f8dd69187841cdd22a26'
     }
     window.location.href = `https://github.com/login/oauth/authorize?${qs.stringify(opts)}`
+  },
+
+  logout() {
+    app.me.logout()
+    window.location = '/'
   },
 
   authCallback(code) {
