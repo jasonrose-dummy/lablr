@@ -4,7 +4,7 @@ import InternalNav from './components/internal-nav'
 
 export default React.createClass({
   mixins: [mixin],
-  
+
   render() {
     const {me} = this.props
 

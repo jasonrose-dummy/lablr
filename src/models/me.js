@@ -1,6 +1,8 @@
 import Model from 'ampersand-model'
+import Repos from './repos'
+import ajaxConfig from '../helpers/github-api-mixin.js'
 
-export default Model.extend({
+export default Model.extend(ajaxConfig, {
   initialize() {
     if(localStorage.token) {
       this.token = localStorage.token
@@ -17,14 +19,6 @@ export default Model.extend({
 
   url: 'https://api.github.com/user',
 
-  ajaxConfig() {
-    return {
-      headers: {
-        'Authorization': `token ${this.token}`
-      }
-    }
-  },
-
   props: {
     token: 'string',
     login: 'string'
@@ -37,6 +31,10 @@ export default Model.extend({
         return !!this.token
       }
     }
+  },
+
+  collections: {
+    repos: Repos
   },
 
   logout() {
