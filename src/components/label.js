@@ -27,14 +27,21 @@ export default React.createClass({
 
   submit(e) {
     e.preventDefault()
+    const {label} = this.props
+    label.update(this.state)
+    label.isEditing = false
   },
 
   changeName(e) {
-
+    this.setState({
+      name: e.target.value
+    })
   },
 
   changeColor(e) {
-
+    this.setState({
+      color: e.target.value
+    })
   },
 
   render() {
