@@ -5,10 +5,10 @@ export default React.createClass({
   mixins: [reactMixin],
 
   render() {
-    const {name, labels} = this.props.repo
+    const {repo, labels} = this.props
     return (
       <div className="container">
-        <h1>{name} Labels</h1>
+        <h1>{repo.name} Labels</h1>
         <p>Create New Label</p>
         <ul>
           {labels.map((label) =>

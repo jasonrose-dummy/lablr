@@ -25,5 +25,10 @@ export default Model.extend(ajaxConfig, {
 
   url() {
     return `https://api.github.com/repos/${this.full_name}`
+  },
+
+  fetch() {
+    Model.prototype.fetch.apply(this, arguments)
+    this.labels.fetch()
   }
 })
