@@ -5,8 +5,9 @@ import qs from 'qs'
 import xhr from 'xhr'
 import Public from './pages/public'
 import Repos from './pages/repos'
+import Repo from './pages/repo'
 import Layout from './layout'
-import Message from './pages/message.js'
+import Message from './pages/message'
 
 const auth = function(name) {
   return function() {
@@ -22,6 +23,7 @@ export default Router.extend({
   routes: {
     '': 'public',
     'repos': auth('repos'),
+    'repos/:name/:repoName': auth('repoDetail'),
     'login': 'login',
     'auth/callback?code=:code': 'authCallback',
     'logout': 'logout',
@@ -42,7 +44,12 @@ export default Router.extend({
   },
 
   repos() {
-    this._renderPage(Repos)
+    this._renderPage(Repos, {repos: app.me.repos})
+  },
+
+  repoDetail(name, fullName) {
+    const repo = app.me.repos.getByFullName(`${name}/${fullName}`)
+    this._renderPage(Repo, {repo})
   },
 
   login() {

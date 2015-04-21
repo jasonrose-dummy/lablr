@@ -5,21 +5,18 @@ export default React.createClass({
   mixins: [reactMixin],
 
   render() {
-    const {repos} = this.props
-
+    const {name, labels} = this.props.repo
     return (
       <div className="container">
-        <header role="banner">
-          <h1>Repos</h1>
-        </header>
+        <h1>{name} Labels</h1>
+        <p>Create New Label</p>
         <ul>
-          {repos.map((repo) =>
-            <li key={repo.id}>
-              <a href={repo.appUrl}>{repo.full_name}</a>
-            </li>
+          {labels.map((label) =>
+            <li key={label.name}>{label.name}</li>
           )}
         </ul>
       </div>
     )
   }
+
 })
