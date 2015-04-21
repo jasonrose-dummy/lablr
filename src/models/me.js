@@ -15,8 +15,19 @@ export default Model.extend({
     )
   },
 
+  url: 'https://api.github.com/user',
+
+  ajaxConfig() {
+    return {
+      headers: {
+        'Authorization': `token ${this.token}`
+      }
+    }
+  },
+
   props: {
-    token: 'string'
+    token: 'string',
+    login: 'string'
   },
 
   derived: {

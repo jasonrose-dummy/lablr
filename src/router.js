@@ -30,7 +30,7 @@ export default Router.extend({
 
   _renderPage(Page, options = {}) {
     const Main = (
-      <Layout>
+      <Layout me={app.me}>
         <Page {...options}/>
       </Layout>
     )
