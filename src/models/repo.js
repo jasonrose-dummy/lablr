@@ -3,8 +3,9 @@ import ajaxConfig from '../helpers/github-api-mixin'
 import Labels from './labels'
 
 export default Model.extend(ajaxConfig, {
+  idAttribute: 'full_name',
+
   props: {
-    id: 'number',
     name: 'string',
     full_name: 'string',
     description: 'string'

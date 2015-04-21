@@ -8,5 +8,9 @@ export default Model.extend(ajaxConfig, {
     url: 'string',
     name: 'string',
     color: 'string'
+  },
+
+  session: {
+    isEditing: 'boolean'
   }
 })

@@ -11,6 +11,7 @@ export default Collection.extend(ajaxConfig, {
     let model = this.findWhere({full_name: fullName})
     if(!model) {
       model = new Repo({full_name: fullName})
+      this.add(model)
     }
     model.fetch()
     return model
