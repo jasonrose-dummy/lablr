@@ -1,6 +1,7 @@
+import app from 'ampersand-app'
+import icons from 'octicons/octicons/octicons.css'
 import styles from './styles/main.styl'
 import Router from './router.js'
-import app from 'ampersand-app'
 import Me from './models/me'
 
 app.extend({
