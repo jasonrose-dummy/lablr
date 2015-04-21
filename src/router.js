@@ -6,6 +6,7 @@ import xhr from 'xhr'
 import Public from './pages/public'
 import Repos from './pages/repos'
 import Layout from './layout'
+import Message from './pages/message.js'
 
 const auth = function(name) {
   return function() {
@@ -23,13 +24,14 @@ export default Router.extend({
     'repos': auth('repos'),
     'login': 'login',
     'auth/callback?code=:code': 'authCallback',
-    'logout': 'logout'
+    'logout': 'logout',
+    '*404': 'fourOhFour'
   },
 
-  _renderPage(Page, options) {
+  _renderPage(Page, options = {}) {
     const Main = (
       <Layout>
-        <Page />
+        <Page {...options}/>
       </Layout>
     )
     React.render(Main, document.body)
@@ -69,5 +71,9 @@ export default Router.extend({
         this.redirectTo('/repos')
       }
     })
+  },
+
+  fourOhFour() {
+    this._renderPage(Message, {title: '404', body: 'Nothing to see here'})
   }
 })
