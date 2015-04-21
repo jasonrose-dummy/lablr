@@ -60,12 +60,14 @@ export default Router.extend({
   },
 
   authCallback(code) {
+    this._renderPage(Message, {title: 'Checking GitHub', body: 'Please wait a moment'})
     xhr({
       url: `https://labelr-dev.herokuapp.com/authenticate/${code}`,
       json: true
     }, (err, resp, body) => {
       if(err) {
         console.error(err)
+        this._renderPage(Message, {title: 'Oops', body: 'An error happened'})
       } else {
         app.me.token = body.token
         this.redirectTo('/repos')
